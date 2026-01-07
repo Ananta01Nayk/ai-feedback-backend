@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from bson import ObjectId
 from fastapi import HTTPException
@@ -22,6 +22,12 @@ app.add_middleware(
 @app.get("/")
 def health():
     return {"status": "API running"}
+
+
+@app.head("/")
+def health_head():
+    # Return an empty 200 response for HEAD requests (used by some load balancers)
+    return Response(status_code=200)
 
 @app.post("/submit-review")
 def submit_review(data: ReviewRequest):
