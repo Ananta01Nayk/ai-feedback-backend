@@ -3,9 +3,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from bson import ObjectId
 from fastapi import HTTPException
 
-from schemas import ReviewRequest
-from db import reviews_collection
-from llm import generate_ai_response
+from app.schemas import ReviewRequest
+from app.db import reviews_collection
+from app.llm import generate_ai_response
 
 app = FastAPI()
 
